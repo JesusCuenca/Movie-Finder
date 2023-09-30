@@ -2,7 +2,25 @@
   <v-container>
 
     <v-toolbar flat color="transparent" density="compact">
-      <v-toolbar-title>Descubre lo último</v-toolbar-title>
+      <v-toolbar-title>Descubre</v-toolbar-title>
+      <v-toolbar-items>
+        <v-menu>
+          <template v-slot:activator="{ props }">
+            <v-btn
+              color="primary"
+              v-bind="props"
+            >
+              <v-icon icon="mdi-chevron-down"></v-icon>
+              {{ listTypes[discoverStore.discoverType] }}
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="(text, type) in listTypes" :key="type" @click="changeType(type)">
+              <v-list-item-title>{{ text }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
     </v-toolbar>
 
     <LoadingPanel v-if="discoverStore.isLoading"></LoadingPanel>
@@ -24,10 +42,20 @@
 </template>
 
 <script lang="ts" setup>
-import {useDiscoverStore} from '@/store/discover';
+import {DiscoverSearchTypes, useDiscoverStore} from '@/store/discover';
 import MovieCard from '@/components/MovieCard.vue';
 import LoadingPanel from '@/components/LoadingPanel.vue';
 
+const listTypes = {
+  'now-playing': 'Cartelera',
+  'popular': 'Populares',
+  'top-rated': 'Mejores valoradas',
+  'upcoming': 'Próximos estrenos',
+};
+
 const discoverStore = useDiscoverStore();
 
+function changeType(newType: DiscoverSearchTypes) {
+  discoverStore.changeType(newType);
+}
 </script>
