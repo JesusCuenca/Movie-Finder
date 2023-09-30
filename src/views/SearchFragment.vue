@@ -1,9 +1,6 @@
 <template>
-  <v-main>
-    <router-view />
-  </v-main>
+  Search view
 </template>
 
 <script lang="ts" setup>
-  //
 </script>
