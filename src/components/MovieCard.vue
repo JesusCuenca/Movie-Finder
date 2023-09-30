@@ -1,0 +1,17 @@
+<script setup lang="ts">
+import {Movie} from 'tmdb-ts';
+
+defineProps<{
+  movie: Movie;
+}>();
+</script>
+
+<template>
+  <v-card>
+    <v-img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"></v-img>
+    <v-card-text>
+      <div class="text-subtitle-1">{{ movie.title }}</div>
+      <div class="text-subtitle-2">{{ movie.release_date }}</div>
+    </v-card-text>
+  </v-card>
+</template>
