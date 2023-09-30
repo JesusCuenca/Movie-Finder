@@ -24,9 +24,12 @@ import SearchForm from '@/components/SearchForm.vue';
 import {watch} from 'vue';
 
 const app = useAppStore();
-const props = defineProps<{
-  searchText?: string
-}>();
+const props = defineProps({
+  searchText: {
+    type: String,
+    default: '',
+  },
+});
 
 watch(() => props.searchText, () => {
   handleSearch(props.searchText);

@@ -1,7 +1,9 @@
 <template>
   <v-container>
 
-    <h3 class="mb-3">Mira lo que hemos encontrado: <code>{{ app.searchText }}</code></h3>
+    <v-toolbar flat color="transparent" density="compact">
+      <v-toolbar-title>Mira lo que hemos encontrado</v-toolbar-title>
+    </v-toolbar>
 
     <v-row v-if="app.searchResults.length">
       <v-col cols="6" sm="4" md="3" v-for="movie in app.searchResults" :key="movie.id">
