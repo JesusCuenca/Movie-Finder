@@ -14,9 +14,10 @@ const query = ref<string>(props.searchText || '');
 </script>
 
 <template>
-  <v-card color="blue-lighten-4" variant="flat" :loading="loading">
-    <v-card-title class="text-sm-h4 text-center">El buscador de películas</v-card-title>
-    <v-card-subtitle class="text-center text-wrap">¡Explora nuestro catálogo y encuentra justo lo que necesitas!
+  <v-card class="pt-3" color="blue-lighten-4" variant="flat" :loading="loading">
+    <v-card-title class="text-sm-h4 text-center">¡Busca y encuentra!</v-card-title>
+    <v-card-subtitle class="text-wrap">Un gran catálogo de películas te está esperando. ¿A qué esperas? ¡Dinos qué estás
+      buscando!
     </v-card-subtitle>
     <v-card-text>
       <v-form @submit.prevent="$emit('input', query)">
@@ -33,7 +34,12 @@ const query = ref<string>(props.searchText || '');
         >
           <template #append-inner>
             <v-fade-transition>
-              <v-icon color="secondary" v-show="!!query" icon="mdi-send" flat></v-icon>
+              <v-icon
+                color="primary"
+                v-show="!!query"
+                icon="mdi-send" flat
+                @click="$emit('input', query)"
+              ></v-icon>
             </v-fade-transition>
           </template>
         </v-text-field>

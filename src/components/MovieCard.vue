@@ -12,7 +12,7 @@ defineProps<{
     <MoviePoster :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"></MoviePoster>
     <v-card-text>
       <div class="text-subtitle-1">{{ movie.title }}</div>
-      <div class="text-subtitle-2">{{ movie.release_date }}</div>
+      <div class="text-subtitle-2">{{ movie.release_date.split('-').reverse().join('/') }}</div>
     </v-card-text>
   </v-card>
 </template>
