@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <v-card>
+  <v-card :to="{name: 'Movie', params: { movieId: movie.id }}">
     <v-img :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`"></v-img>
     <v-card-text>
       <div class="text-subtitle-1">{{ movie.title }}</div>

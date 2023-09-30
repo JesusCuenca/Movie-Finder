@@ -9,11 +9,7 @@
       ></SearchForm>
     </v-container>
 
-    <router-view v-slot="{ Component, route }">
-      <v-fade-transition name="slide-x" mode="out-in">
-        <component :is="Component" :key="route.path"/>
-      </v-fade-transition>
-    </router-view>
+    <router-view />
 
   </v-main>
 </template>

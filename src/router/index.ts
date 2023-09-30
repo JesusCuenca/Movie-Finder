@@ -2,7 +2,7 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 
-const routes : RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: HomeView,
@@ -22,7 +22,8 @@ const routes : RouteRecordRaw[] = [
   },
   {
     path: '/movie/:movieId',
-    props: true,
+    name: 'Movie',
+    props: (route) => ({movieId: parseInt(route.params.movieId as string)}),
     component: () => import(/* webpackChunkName: "movie" */ '@/views/MovieView.vue'),
   },
 ];
