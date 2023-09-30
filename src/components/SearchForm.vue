@@ -5,11 +5,16 @@ defineEmits<{
   (e: 'input', value: string): void
 }>();
 
-const query = ref<string>('');
+const props = defineProps<{
+  searchText?: string;
+  loading: boolean;
+}>();
+
+const query = ref<string>(props.searchText || '');
 </script>
 
 <template>
-  <v-card color="blue-lighten-4" variant="flat">
+  <v-card color="blue-lighten-4" variant="flat" :loading="loading">
     <v-card-title class="text-sm-h4 text-center">El buscador de películas</v-card-title>
     <v-card-subtitle class="text-center text-wrap">¡Explora nuestro catálogo y encuentra justo lo que necesitas!
     </v-card-subtitle>
